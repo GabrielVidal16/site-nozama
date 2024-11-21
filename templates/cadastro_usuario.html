@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site do Gabriel!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bokor&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo para a faixa colorida */
+        .faixa {
+            background-color: #ff0000;
+            height: 100px; /* Altura da faixa */
+            width: 100%; /* Largura total da página */
+            text-align: center; /* Alinha o texto à esquerda */
+            line-height: 200px; /* Centraliza o texto verticalmente */
+            color: rgb(0, 0, 0); /* Cor do texto */
+            font-size: 150px; /* Tamanho da fonte */
+            font-family: 'Bokor', sans-serif; /* Fonte do texto */
+        }
+
+        .faixa2 {
+            background-color: #ffe600;
+            height: 100px; /* Altura da faixa */
+            width: 100%; /* Largura total da página */
+            text-align: center; /* Alinha o texto à esquerda */
+            line-height: 100px; /* Centraliza o texto verticalmente */
+            color: rgb(187, 17, 102); /* Cor do texto */
+            font-size: 100px; /* Tamanho da fonte */
+        }
+
+        /* Estilo para a caixa */
+        .caixa {
+            width: 400px;
+            height: 600px;
+            background-color: #613919; /* Cor de fundo para a caixa */
+            display: flex;
+            justify-content: center; /* Centraliza o conteúdo horizontalmente dentro da caixa */
+            align-items: center; /* Centraliza o conteúdo verticalmente dentro da caixa */
+            color: #fff;
+            font-size: 20px;
+            position: absolute; /* Para permitir posicionamento absoluto */
+            top: 60%; /* Posiciona no meio verticalmente */
+            left: 50%; /* Posiciona no meio horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta a posição para que o centro da caixa esteja no meio da tela */
+            z-index: 1; /* Para garantir que a caixa fique abaixo dos outros elementos */
+        }
+
+        /* Estilo para o formulário, para colocá-lo sobre a caixa */
+        form {
+            position: absolute;
+            top: 60%; /* Posiciona no meio verticalmente */
+            left: 45%; /* Posiciona no meio horizontalmente */
+            transform: translate(-50%, -50%); /* Ajusta a posição para o centro */
+            z-index: 2; /* Garante que o formulário fique acima da caixa */
+            color: #fff; /* Cor do texto do formulário */
+            font-size: 18px; /* Tamanho da fonte do formulário */
+            text-align: left; /* Alinha o texto do formulário ao centro */
+        }
+
+        /* Outros estilos para o formulário */
+        label, input {
+            display: block;
+            margin: 10px 5;
+            width: 180px;
+        }
+
+    </style>
+</head>
+<body style="background-color: rgb(73, 36, 11);">
+
+    
+    <div class="faixa">NOZAMA</div>
+    <div class="faixa2"></div>
+    
+    <!-- Outros elementos -->
+    <h1>Texto 1</h1>
+    <h1>Texto 2</h1>
+
+    <form action="/create_usuario" method="post">
+        
+        
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" required required minlength="5"><br><br>
+
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="senha">Senha:</label><br>
+        <input type="text" id="senha" name="senha"  required minlength="6"><br><br>
+
+        <label for="endereco">Endereco:</label><br>
+        <input type="endereco" id="email" name="endereco" required><br><br>
+
+        <label for="data_nascimento">Data de Nascimento:</label><br>
+        <input type="date" id="data_nascimento" name="data_nascimento" required min="1900-01-01" max="2024-12-31" value="2000-01-01">
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+    
+    <h2>Formulário de Cadastro</h2>
+
+
+
+    <!-- Caixa centralizada -->
+    <div class="caixa"></div>
+
+</body>
+</html>
