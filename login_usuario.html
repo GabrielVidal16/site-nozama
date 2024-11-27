@@ -1,0 +1,6 @@
+CREATE TABLE senhas (
+    id_usuario INT PRIMARY KEY,
+    senha VARCHAR(255) NOT NULL DEFAULT 'Senac24',
+    CONSTRAINT FK_Senhas_Usuarios FOREIGN KEY (id_usuario)
+        REFERENCES Usuarios(id)
+);

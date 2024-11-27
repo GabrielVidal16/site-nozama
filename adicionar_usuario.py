@@ -1,5 +1,7 @@
+
 from flask import Flask, flash, render_template, request, redirect, url_for
 import mysql.connector
+import utils 
 
 app = Flask(__name__)
 
@@ -22,30 +24,25 @@ def criar_usuario():
     email = request.form['email']
     senha = request.form['senha']
 
-    try:
-            connection = mysql.connector.connect(
-            host=db_host,
-            user=db_user,
-            password=db_password,
-            database=db_name
-            )
-            cursor = connection.cursor()
+    try :
+        connection = connect_to_database()
+            
+        cursor = connection.cursor()
 
-            # Executar comando SQL para inserir dados
-            cursor.execute("SELECT COUNT(*) FROM usuarios WHERE nome = %s", (nome,))
-            count = cursor.fetchone()[0]  # Obtém o primeiro valor da primeira linha do resultado
+        # Executar comando SQL para inserir dados
+        cursor.execute("SELECT COUNT(*) FROM usuarios WHERE nome = %s", (nome,))
+        count = cursor.fetchone()[0]  # Obtém o primeiro valor da primeira linha do resultado
 
-           
-            sql = "INSERT INTO usuarios (nome , endereco , email , senha , data_nascimento) VALUES (%s, %s, %s, %s, %s)"
-            cursor.execute(sql , (nome , endereco , email , senha, data_nascimento))
-            connection.commit()
-            # Redirecionar para página de sucesso ou outra página
-            return redirect(url_for('sucesso')) 
+        
+        sql = "INSERT INTO usuarios (nome , endereco , email , senha , data_nascimento) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql , (nome , endereco , email , senha, data_nascimento))
+        connection.commit()
+        # Redirecionar para página de sucesso ou outra página
+        return redirect(url_for('sucesso')) 
 
     except mysql.connector.Error as err:
             print(f"Erro ao conectar ao banco de dados: {err}")
-            flash('este nome ja esta em uso','error')
-            return redirect(url_for('/cadastro_usuario.html'))
+            return redirect(url_for('ERRO OS DADOS NAO FORAM INSERIDOS'))
     finally:
             # Fechar conexão com o banco de dados
             if cursor:
@@ -58,6 +55,8 @@ def criar_usuario():
 @app.route('/sucesso')
 def sucesso():
     return 'Dados inseridos com sucesso!'
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
